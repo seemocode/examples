@@ -1,0 +1,146 @@
+//
+//  AccountViewController.swift
+//  Health Assistance
+//
+//  Created by Seemo S on 2018-09-12.
+//  Copyright © 2018 Daniella & Tasnim. All rights reserved.
+//
+
+import UIKit
+
+class SignInViewController: UIViewController {
+
+<<<<<<< HEAD
+    let dbHelper = JSONHandler() //database json parsing happen here
+    var saveUserID = 9999 //to save userid, so it can be passed to next screen
+=======
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+>>>>>>> caa4c60a23c1fd0667f55aabfa650e0714e9d53e
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+<<<<<<< HEAD
+    @IBAction func processSignIn(_ sender: Any) {
+        print("in sign in button")
+        let urlPHPPath: String = "http://cis4250.com/signIn.php"
+        
+        let url: URL = URL(string: urlPHPPath)!
+        //format user data for post
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let postStr = "email=djd" //hard coded for success
+        //let postStr = "email=djdfhjkdhfkjsdhfkj" //hard coded not to work
+        
+        print(postStr) //print post string for logging purposes
+        
+        let postData = postStr.data(using: .utf8) //create post request
+        request.httpBody = postData
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        
+        //dont get cached data
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        
+        let defaultSession = Foundation.URLSession(configuration: config)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("Data downloaded")
+                print("sign in data: ",data!) //shows number of bytes downloaded
+            
+                self.saveUserID = self.dbHelper.parseSingleUserID(data!)
+                
+                //print string returned from PHP
+                print(String(data: data!, encoding: String.Encoding.utf8) as Any)
+                print("end of sign in print")
+                
+                //when task is complete, call method to complete sign in process
+                DispatchQueue.main.async(execute: { () -> Void in
+                    
+                    print("saved user ID from sign in:",self.saveUserID )
+                    if (self.saveUserID == 9999) {
+                        //doesn't match, stop from proceeding
+                        
+                    } else {
+                        //does match, pass user id and email to next screen
+                        
+                    }
+
+                })
+            }
+        }
+        
+        task.resume()
+        
+    }
+    
+
+
+=======
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    
+    
+    //call php api to insert new user
+    @IBAction func signIn(_ sender: Any) {
+        print("WITHIN SIGN IN")
+        let url = URL(string: "http://cis4250.com/signIn.php")!
+        
+        //format user data for post
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let emailStr = "email=" + email.text!
+        
+        //let postStr2 = "&passwordHash=passwordHash&passwordSalt=passwordSalt&score=1&petNum=1&clockPref=0"
+        
+        let postStr = emailStr
+        
+        print(postStr) //print post string for logging purposes
+        
+        let postData = postStr.data(using: .utf8) //create post request
+        request.httpBody = postData
+        
+        //start URL session
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to call API")
+                
+            }else {
+                print("API call successful")
+                
+                //print string returned from PHP
+                print(String(data: data!, encoding: String.Encoding.utf8) as Any)
+            }
+            
+        }
+        
+        task.resume()
+    }
+>>>>>>> caa4c60a23c1fd0667f55aabfa650e0714e9d53e
+}

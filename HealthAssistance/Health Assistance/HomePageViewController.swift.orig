@@ -1,0 +1,408 @@
+//
+//  HomePageViewController.swift
+//  Health Assistance
+//
+//  Created by Seemo S on 2018-09-15.
+//  Copyright © 2018 Daniella & Tasnim. All rights reserved.
+//
+
+import UIKit
+
+struct userSettings {
+   // var healthItemsSelected: NSMutableArray = NSMutableArray() //maybe?
+    var petNum: Int
+    var score: Int
+    var name: String
+    var email: String
+    var userID: String
+    var clockPref: String
+    //maybe add more here later
+}
+
+//create global struct so that we don't have to keep passing around info between screens
+var globalUserStruct: userSettings = userSettings(petNum: 1,score: 0,name: "",email: "",userID: "",clockPref: "")
+
+class HomePageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var userID: Int = 0 //to be passed from signin/signup screens
+    var email: String = "" //to be passed from signin/signup screens
+    var taskItems: NSArray = NSArray() //table on screen
+    
+    let dbHelper = JSONHandler() //database json parsing happen here
+    
+    @IBOutlet weak var taskTable: UITableView! //qutlet for table on screen
+    @IBOutlet weak var welcomeLabel: UILabel! //welcome name, to be modifed with users name
+    
+    //pet images
+    @IBOutlet weak var pet1OpenEyes: UIImageView!
+    @IBOutlet weak var pet1Body: UIImageView!
+    @IBOutlet weak var pet1ClosedEyes: UIImageView!
+    
+    //pet message box and label
+    @IBOutlet weak var petMessageLabel: UILabel!
+    @IBOutlet weak var petMessageBox: UIImageView!
+    
+    //create timer for when the pet will 'blink'
+    var blinkTimer: Timer!
+    
+    //create the animations for the images on screen
+    var messageAnimation: CAKeyframeAnimation!
+    var petAnimation: CAKeyframeAnimation!
+    
+    //create tap recognizers for the pet images
+    let tapRecPetBody = UITapGestureRecognizer()
+    let tapRecPetEyesOpen = UITapGestureRecognizer()
+    let tapRecPetEyesClosed = UITapGestureRecognizer()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //create freeform path for message box
+        let miniRecPath = UIBezierPath()
+        miniRecPath.move(to: CGPoint(x: 210, y: 180))
+        miniRecPath.addLine(to: CGPoint(x: 250, y: 180))
+        miniRecPath.addLine(to: CGPoint(x: 250, y: 190))
+        miniRecPath.addLine(to: CGPoint(x: 210, y: 190))
+        miniRecPath.addLine(to: CGPoint(x: 210, y: 180))
+        
+        //set the freefrom path to the message animation
+        messageAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.position))
+        messageAnimation.duration = 5
+        messageAnimation.repeatCount = MAXFLOAT
+        messageAnimation.path = miniRecPath.cgPath
+        
+        //create line path for pet
+        let linePath = UIBezierPath()
+        linePath.move(to: CGPoint(x: 180, y: 280))
+        linePath.addLine(to: CGPoint(x: 250, y: 280))
+        linePath.addLine(to: CGPoint(x: 180, y: 280))
+        
+        //set line path to the pet animation
+        petAnimation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.position))
+        petAnimation.duration = 5
+        petAnimation.repeatCount = MAXFLOAT
+        petAnimation.path = linePath.cgPath
+        
+        //set the animations for the image layers
+        pet1ClosedEyes.layer.add(petAnimation, forKey: nil)
+        pet1OpenEyes.layer.add(petAnimation, forKey: nil)
+        pet1Body.layer.add(petAnimation, forKey: nil)
+        petMessageLabel.layer.add(messageAnimation, forKey: nil)
+        petMessageBox.layer.add(messageAnimation, forKey: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //temp set, delete later
+       // self.userID = 75
+       // self.email = "fefe"
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 06fe736bf3af9c3e36b0ea8e8da6695af7bb783c
+        
+        //hide the message box at first
+        self.petMessageLabel.isHidden = true
+        self.petMessageBox.isHidden = true
+        self.pet1ClosedEyes.isHidden = false
+        self.pet1OpenEyes.isHidden = true
+        
+        print("home view started")
+        print("userid: ", self.userID) //prints vars passed from previous screen
+        print("email: ", self.email)
+        
+        //set global vars
+        globalUserStruct.email = self.email
+        globalUserStruct.userID = String(self.userID)
+        
+        //set delegates for tabel view
+        self.taskTable.delegate = self
+        self.taskTable.dataSource = self
+        
+        //update task table
+        self.updateTableWithUserTasks()
+        
+        self.updateGlobalUserStruct()
+        
+        //set blink timer
+        blinkTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(switchImage), userInfo: nil, repeats: true)
+        
+        //set user interactions to true for all images
+        pet1Body.isUserInteractionEnabled = true;
+        pet1OpenEyes.isUserInteractionEnabled = true;
+        pet1ClosedEyes.isUserInteractionEnabled = true;
+        
+        //set the function for the tap gestures to call
+        tapRecPetBody.addTarget(self, action: #selector(HomePageViewController.tapImage))
+        tapRecPetEyesOpen.addTarget(self, action: #selector(HomePageViewController.tapImage))
+        tapRecPetEyesClosed.addTarget(self, action: #selector(HomePageViewController.tapImage))
+        
+        //give each pet image a tap gesture
+        pet1OpenEyes.addGestureRecognizer(tapRecPetEyesOpen)
+        pet1ClosedEyes.addGestureRecognizer(tapRecPetEyesClosed)
+        pet1Body.addGestureRecognizer(tapRecPetBody)
+        
+        //moves the pet on screen, side to side, only shows on phone
+        self.addParallaxToView(vw: pet1Body)
+        self.addParallaxToView(vw: pet1OpenEyes)
+        self.addParallaxToView(vw: pet1Body)
+        
+        //create observers for side menus
+        NotificationCenter.default.addObserver(self,selector: #selector(showCreateReminders), name: NSNotification.Name("createReminder"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showViewEditReminders), name: NSNotification.Name("viewEditReminders"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showViewEditTasks), name: NSNotification.Name("viewEditTasks"), object: nil)
+        //logout selection
+        /*NotificationCenter.default.addObserver(self, selector: #selector(showLogOut), name:
+            NSNotification.Name("logOut"), object: nil)*/
+    }
+    
+    //functions for side menu segue
+    @objc func showCreateReminders() {
+        performSegue(withIdentifier: "createReminder", sender: nil)
+    }
+    
+    @objc func showViewEditReminders() {
+        performSegue(withIdentifier: "viewEditReminders", sender: nil)
+    }
+    
+    @objc func showViewEditTasks() {
+        performSegue(withIdentifier: "viewEditTasks", sender: nil)
+    }
+    //logout
+    /*@objc func showLogOut() {
+        performSegue(withIdentifier: "logOut", sender: nil)
+    }*/
+
+    //call observer to show side menu
+    @IBAction func menuClicked(_ sender: Any) {
+        print("SIDE MENU CLICKED")
+        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+    }
+    
+    //called after thread from api call is complete
+    func updateTable(items: NSArray) {
+        taskItems = items
+        print(taskItems)
+        self.taskTable.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of table items
+        return taskItems.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+            }
+            else{
+                cell.accessoryType = .checkmark
+            }
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Retrieve cell
+        let cellIdentifier: String = "taskCell"
+        let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
+        
+        // Get the tasks to be shown
+        let item: UserTasks = taskItems[indexPath.row] as! UserTasks
+        
+        // Get references to labels of cell, and rename them
+        if (item.taskName == "Breakfast"){
+            myCell.textLabel!.text = "Eat a healthy breakfeast"
+        } else if (item.taskName == "Healthy Snacks"){
+            myCell.textLabel!.text = "Have a healthy snack"
+        } else if (item.taskName == "Sleep"){
+            myCell.textLabel!.text = "Sleep 8 hours"
+        } else if (item.taskName == "Skincare"){
+            myCell.textLabel!.text = "Take care of your skin"
+        }  else if (item.taskName == "Water Intake"){
+            myCell.textLabel!.text = "Drink 8 glasses of water"
+        } else {
+            myCell.textLabel!.text = item.taskName
+        }
+        
+        return myCell
+    }
+    
+    func updateTableWithUserTasks() {
+        
+        let urlPHPPath: String = "http://cis4250.com/getUserTasks.php"
+        
+        let url: URL = URL(string: urlPHPPath)!
+        //format user data for post
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let postStr = "userID=" + globalUserStruct.userID
+        
+        print(postStr) //print post string for logging purposes
+        
+        let postData = postStr.data(using: .utf8) //create post request
+        request.httpBody = postData
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        
+        //dont get cached data
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        
+        let defaultSession = Foundation.URLSession(configuration: config)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("Data downloaded")
+                print(data!) //shows number of bytes downloaded
+                
+                let tempTaskArray = self.dbHelper.parseUserTaskJSON(data!)
+                //print string returned from PHP
+                print(String(data: data!, encoding: String.Encoding.utf8) as Any)
+                
+                //when task is complete, call method to update table
+                DispatchQueue.main.async(execute: { () -> Void in
+                    
+                    self.updateTable(items: tempTaskArray)
+                    
+                })
+            }
+        }
+        
+        task.resume()
+    }
+    
+    //function to call to make image blink
+    @objc func switchImage() {
+        
+        print("switch image")
+        
+        if (pet1ClosedEyes.isHidden){
+            pet1ClosedEyes.isHidden = false
+            pet1OpenEyes.isHidden = true
+        } else {
+            pet1ClosedEyes.isHidden = true
+            pet1OpenEyes.isHidden = false
+        }
+    }
+    
+    //creates the movement of the images when the phone is tilted
+    func addParallaxToView(vw: UIView) {
+        let amount = 100
+        
+        let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        horizontal.minimumRelativeValue = -amount
+        horizontal.maximumRelativeValue = amount
+        
+        let vertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+        vertical.minimumRelativeValue = -amount
+        vertical.maximumRelativeValue = amount
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [horizontal, vertical]
+        vw.addMotionEffect(group)
+    }
+    
+    //called when images are tapped
+    @objc func tapImage() {
+        
+        print("image tapped")
+        
+        //make pet blink when image is tapped
+        if (pet1ClosedEyes.isHidden){
+            pet1ClosedEyes.isHidden = false
+            pet1OpenEyes.isHidden = true
+        } else {
+            pet1ClosedEyes.isHidden = true
+            pet1OpenEyes.isHidden = false
+        }
+        
+        //chose label message randomly
+        let ranNum = Int(arc4random_uniform(4))
+        let welcomeMessages: NSMutableArray = NSMutableArray()
+        welcomeMessages.add("Welcome Friend")
+        welcomeMessages.add("Hello Friend")
+        welcomeMessages.add("Happy to see you here")
+        welcomeMessages.add("Hello :)")
+        
+        self.petMessageLabel.text = welcomeMessages[ranNum] as? String
+        
+        //set message bubble to visible
+        self.petMessageLabel.isHidden = false
+        self.petMessageBox.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            //set message bubble to invisible after 5 secs
+            self.petMessageLabel.isHidden = true
+            self.petMessageBox.isHidden = true
+        }
+        
+    }
+    
+    func updateGlobalUserStruct() {
+        let urlPHPPath: String = "http://cis4250.com/getUserInfo.php"
+        
+        let url: URL = URL(string: urlPHPPath)!
+        //format user data for post
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let postStr = "userID=" + globalUserStruct.userID
+        
+        print(postStr) //print post string for logging purposes
+        
+        let postData = postStr.data(using: .utf8) //create post request
+        request.httpBody = postData
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        
+        //dont get cached data
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        
+        let defaultSession = Foundation.URLSession(configuration: config)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("Data downloaded")
+                print(data!) //shows number of bytes downloaded
+                
+                let tempUserInfoArray = self.dbHelper.parseUserInfoJSON(data!)
+                
+                //print string returned from PHP
+                print(String(data: data!, encoding: String.Encoding.utf8) as Any)
+                
+                //when task is complete, call method to update table
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let parseUserInfo: UserInfo = tempUserInfoArray[0] as! UserInfo
+                    
+                    globalUserStruct.name = parseUserInfo.name
+                    globalUserStruct.score = Int(parseUserInfo.score)!
+                    globalUserStruct.petNum = Int(parseUserInfo.petNum)!
+                    globalUserStruct.clockPref = parseUserInfo.clockPref
+                    
+                    print("global struct updated")
+                    print(globalUserStruct)
+                    
+                    self.welcomeLabel.text = "Welcome, " + globalUserStruct.name
+                    
+                })
+            }
+        }
+        
+        task.resume()
+    }
+
+}

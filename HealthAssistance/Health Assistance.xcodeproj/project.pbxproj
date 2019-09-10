@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6403980821782BAB00176609 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6403980721782BAB00176609 /* AchievementsViewController.swift */; };
+		6403980A21782C4F00176609 /* HealthFocusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6403980921782C4F00176609 /* HealthFocusesViewController.swift */; };
+		64051E0E2156FB05006A3A10 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64051E0D2156FB05006A3A10 /* JSONHandler.swift */; };
+		64051E102156FB36006A3A10 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64051E0F2156FB36006A3A10 /* TaskModel.swift */; };
+		6433C83E217FE53F0048809F /* CurrentRemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C83D217FE53F0048809F /* CurrentRemindersViewController.swift */; };
+		6433C84221854F930048809F /* CreateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C84121854F930048809F /* CreateReminder.swift */; };
+		6433C84421854FA70048809F /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C84321854FA70048809F /* EditProfile.swift */; };
+		6433C846219799570048809F /* TipsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C845219799570048809F /* TipsPageViewController.swift */; };
+		6433C8482198E74F0048809F /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C8472198E74F0048809F /* AddFriendsViewController.swift */; };
+		6433C84A2198E75F0048809F /* ViewFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C8492198E75F0048809F /* ViewFriendsViewController.swift */; };
+		6433C84C21A339DA0048809F /* CustomTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C84B21A339DA0048809F /* CustomTasksViewController.swift */; };
+		6433C84E21A3B4FF0048809F /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C84D21A3B4FF0048809F /* CreateGroupViewController.swift */; };
+		6433C85021A3B51C0048809F /* ViewFriendGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C84F21A3B51C0048809F /* ViewFriendGroupsViewController.swift */; };
+		6433C85221A3B53C0048809F /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C85121A3B53C0048809F /* GroupDetailsViewController.swift */; };
+		6433C85421A72D030048809F /* PendingRequestsSent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6433C85321A72D030048809F /* PendingRequestsSent.swift */; };
+		64805D7F216EBFAD00E059B0 /* SideMenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64805D7E216EBFAD00E059B0 /* SideMenuTVC.swift */; };
+		64805D81216EC6B700E059B0 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64805D80216EC6B700E059B0 /* ContainerViewController.swift */; };
+		649483442149E10400FB6563 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649483432149E10400FB6563 /* AppDelegate.swift */; };
+		649483462149E10400FB6563 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649483452149E10400FB6563 /* InitialViewController.swift */; };
+		649483492149E10500FB6563 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649483472149E10500FB6563 /* Main.storyboard */; settings = {ASSET_TAGS = (10, ); }; };
+		6494834B2149E10500FB6563 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6494834A2149E10500FB6563 /* Assets.xcassets */; };
+		6494834E2149E10500FB6563 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6494834C2149E10500FB6563 /* LaunchScreen.storyboard */; };
+		649483582149E6C300FB6563 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649483572149E6C300FB6563 /* SignInViewController.swift */; };
+		6494835A214C0C7D00FB6563 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64948359214C0C7D00FB6563 /* SignUpViewController.swift */; };
+		6494835C214DB6CE00FB6563 /* SignUpPart2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494835B214DB6CE00FB6563 /* SignUpPart2ViewController.swift */; };
+		6494835E214DBDC400FB6563 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494835D214DBDC400FB6563 /* HomePageViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		640398062176A45800176609 /* HealthAssistance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthAssistance-Bridging-Header.h"; sourceTree = "<group>"; };
+		6403980721782BAB00176609 /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
+		6403980921782C4F00176609 /* HealthFocusesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthFocusesViewController.swift; sourceTree = "<group>"; };
+		64051E0D2156FB05006A3A10 /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
+		64051E0F2156FB36006A3A10 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		6433C83D217FE53F0048809F /* CurrentRemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRemindersViewController.swift; sourceTree = "<group>"; };
+		6433C84121854F930048809F /* CreateReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminder.swift; sourceTree = "<group>"; };
+		6433C84321854FA70048809F /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		6433C845219799570048809F /* TipsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsPageViewController.swift; sourceTree = "<group>"; };
+		6433C8472198E74F0048809F /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		6433C8492198E75F0048809F /* ViewFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFriendsViewController.swift; sourceTree = "<group>"; };
+		6433C84B21A339DA0048809F /* CustomTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTasksViewController.swift; sourceTree = "<group>"; };
+		6433C84D21A3B4FF0048809F /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		6433C84F21A3B51C0048809F /* ViewFriendGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFriendGroupsViewController.swift; sourceTree = "<group>"; };
+		6433C85121A3B53C0048809F /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
+		6433C85321A72D030048809F /* PendingRequestsSent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingRequestsSent.swift; sourceTree = "<group>"; };
+		64805D7E216EBFAD00E059B0 /* SideMenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTVC.swift; sourceTree = "<group>"; };
+		64805D80216EC6B700E059B0 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		649483402149E10400FB6563 /* Health Assistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health Assistance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		649483432149E10400FB6563 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		649483452149E10400FB6563 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		649483482149E10500FB6563 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6494834A2149E10500FB6563 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6494834D2149E10500FB6563 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6494834F2149E10500FB6563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		649483572149E6C300FB6563 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		64948359214C0C7D00FB6563 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		6494835B214DB6CE00FB6563 /* SignUpPart2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPart2ViewController.swift; sourceTree = "<group>"; };
+		6494835D214DBDC400FB6563 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6494833D2149E10400FB6563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		649483372149E10400FB6563 = {
+			isa = PBXGroup;
+			children = (
+				649483422149E10400FB6563 /* Health Assistance */,
+				649483412149E10400FB6563 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		649483412149E10400FB6563 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				649483402149E10400FB6563 /* Health Assistance.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		649483422149E10400FB6563 /* Health Assistance */ = {
+			isa = PBXGroup;
+			children = (
+				640398062176A45800176609 /* HealthAssistance-Bridging-Header.h */,
+				649483432149E10400FB6563 /* AppDelegate.swift */,
+				649483452149E10400FB6563 /* InitialViewController.swift */,
+				649483572149E6C300FB6563 /* SignInViewController.swift */,
+				64948359214C0C7D00FB6563 /* SignUpViewController.swift */,
+				6494835B214DB6CE00FB6563 /* SignUpPart2ViewController.swift */,
+				6494835D214DBDC400FB6563 /* HomePageViewController.swift */,
+				649483472149E10500FB6563 /* Main.storyboard */,
+				6403980921782C4F00176609 /* HealthFocusesViewController.swift */,
+				6403980721782BAB00176609 /* AchievementsViewController.swift */,
+				6433C84321854FA70048809F /* EditProfile.swift */,
+				6433C84121854F930048809F /* CreateReminder.swift */,
+				6433C83D217FE53F0048809F /* CurrentRemindersViewController.swift */,
+				6433C845219799570048809F /* TipsPageViewController.swift */,
+				6433C8472198E74F0048809F /* AddFriendsViewController.swift */,
+				6433C85321A72D030048809F /* PendingRequestsSent.swift */,
+				6433C8492198E75F0048809F /* ViewFriendsViewController.swift */,
+				6433C84B21A339DA0048809F /* CustomTasksViewController.swift */,
+				6433C84D21A3B4FF0048809F /* CreateGroupViewController.swift */,
+				6433C84F21A3B51C0048809F /* ViewFriendGroupsViewController.swift */,
+				6433C85121A3B53C0048809F /* GroupDetailsViewController.swift */,
+				64805D7E216EBFAD00E059B0 /* SideMenuTVC.swift */,
+				64805D80216EC6B700E059B0 /* ContainerViewController.swift */,
+				64051E0D2156FB05006A3A10 /* JSONHandler.swift */,
+				64051E0F2156FB36006A3A10 /* TaskModel.swift */,
+				6494834F2149E10500FB6563 /* Info.plist */,
+				6494834C2149E10500FB6563 /* LaunchScreen.storyboard */,
+				6494834A2149E10500FB6563 /* Assets.xcassets */,
+			);
+			path = "Health Assistance";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6494833F2149E10400FB6563 /* Health Assistance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 649483522149E10500FB6563 /* Build configuration list for PBXNativeTarget "Health Assistance" */;
+			buildPhases = (
+				6494833C2149E10400FB6563 /* Sources */,
+				6494833D2149E10400FB6563 /* Frameworks */,
+				6494833E2149E10400FB6563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Health Assistance";
+			productName = "Health Assistance";
+			productReference = 649483402149E10400FB6563 /* Health Assistance.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		649483382149E10400FB6563 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				KnownAssetTags = (
+					10,
+				);
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Daniella & Tasnim";
+				TargetAttributes = {
+					6494833F2149E10400FB6563 = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6494833B2149E10400FB6563 /* Build configuration list for PBXProject "Health Assistance" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 649483372149E10400FB6563;
+			productRefGroup = 649483412149E10400FB6563 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6494833F2149E10400FB6563 /* Health Assistance */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6494833E2149E10400FB6563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6494834E2149E10500FB6563 /* LaunchScreen.storyboard in Resources */,
+				6494834B2149E10500FB6563 /* Assets.xcassets in Resources */,
+				649483492149E10500FB6563 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6494833C2149E10400FB6563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64051E102156FB36006A3A10 /* TaskModel.swift in Sources */,
+				6433C85021A3B51C0048809F /* ViewFriendGroupsViewController.swift in Sources */,
+				649483462149E10400FB6563 /* InitialViewController.swift in Sources */,
+				64805D81216EC6B700E059B0 /* ContainerViewController.swift in Sources */,
+				6433C846219799570048809F /* TipsPageViewController.swift in Sources */,
+				6403980A21782C4F00176609 /* HealthFocusesViewController.swift in Sources */,
+				6433C84C21A339DA0048809F /* CustomTasksViewController.swift in Sources */,
+				649483442149E10400FB6563 /* AppDelegate.swift in Sources */,
+				6433C85421A72D030048809F /* PendingRequestsSent.swift in Sources */,
+				6433C84221854F930048809F /* CreateReminder.swift in Sources */,
+				6494835E214DBDC400FB6563 /* HomePageViewController.swift in Sources */,
+				64051E0E2156FB05006A3A10 /* JSONHandler.swift in Sources */,
+				6433C84E21A3B4FF0048809F /* CreateGroupViewController.swift in Sources */,
+				6433C84421854FA70048809F /* EditProfile.swift in Sources */,
+				6433C8482198E74F0048809F /* AddFriendsViewController.swift in Sources */,
+				6433C84A2198E75F0048809F /* ViewFriendsViewController.swift in Sources */,
+				64805D7F216EBFAD00E059B0 /* SideMenuTVC.swift in Sources */,
+				6433C85221A3B53C0048809F /* GroupDetailsViewController.swift in Sources */,
+				6494835A214C0C7D00FB6563 /* SignUpViewController.swift in Sources */,
+				6494835C214DB6CE00FB6563 /* SignUpPart2ViewController.swift in Sources */,
+				6403980821782BAB00176609 /* AchievementsViewController.swift in Sources */,
+				649483582149E6C300FB6563 /* SignInViewController.swift in Sources */,
+				6433C83E217FE53F0048809F /* CurrentRemindersViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		649483472149E10500FB6563 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649483482149E10500FB6563 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6494834C2149E10500FB6563 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6494834D2149E10500FB6563 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		649483502149E10500FB6563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		649483512149E10500FB6563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		649483532149E10500FB6563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7927CRPUPU;
+				INFOPLIST_FILE = "Health Assistance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.D-T.cis4250.Health-Assistance";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Health Assistance/HealthAssistance-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		649483542149E10500FB6563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7927CRPUPU;
+				INFOPLIST_FILE = "Health Assistance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.D-T.cis4250.Health-Assistance";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Health Assistance/HealthAssistance-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6494833B2149E10400FB6563 /* Build configuration list for PBXProject "Health Assistance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				649483502149E10500FB6563 /* Debug */,
+				649483512149E10500FB6563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		649483522149E10500FB6563 /* Build configuration list for PBXNativeTarget "Health Assistance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				649483532149E10500FB6563 /* Debug */,
+				649483542149E10500FB6563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 649483382149E10400FB6563 /* Project object */;
+}
